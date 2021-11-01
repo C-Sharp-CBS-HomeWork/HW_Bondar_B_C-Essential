@@ -9,19 +9,33 @@ namespace Task2
     class ClassRoom
     {
         Pupil[] pupils;
-        ClassRoom(Pupil A, Pupil B, Pupil C, Pupil D)
+        public ClassRoom(Pupil A, Pupil B, Pupil C, Pupil D)
         {
             pupils = new Pupil [4] { A, B, C, D};
         }
 
-        ClassRoom(Pupil A, Pupil B, Pupil C)
+        public ClassRoom(Pupil A, Pupil B, Pupil C)
         {
             pupils = new Pupil[3] { A, B, C };
         }
 
-        ClassRoom(Pupil A, Pupil B)
+        public ClassRoom(Pupil A, Pupil B)
         {
             pupils = new Pupil[2] { A, B };
+        }
+
+        public void Stats()
+        {
+            for (int i = 0; i < pupils.Length; i++)
+            {
+                Console.WriteLine(pupils[i].Name);
+                pupils[i].Study();
+                pupils[i].Read();
+                pupils[i].Write();
+                pupils[i].Relax();
+                Console.WriteLine();
+            }
+
         }
     }
 }

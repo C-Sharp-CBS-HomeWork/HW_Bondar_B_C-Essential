@@ -8,25 +8,26 @@ namespace Task2
 {
     class Pupil
     {
-        string name;
-
+        protected string name;
+        public Pupil()
+        { }
         public Pupil(string name)
         {
             this.name = name;
         }
-        public void Study()
+        public virtual void Study()
         {
             Console.WriteLine("Должен учится");
         }
-        public void Read()
+        public virtual void Read()
         {
             Console.WriteLine("Умеет читать");
         }
-        public void Write()
+        public virtual void Write()
         {
             Console.WriteLine("Умеет писать");
         }
-        public void Relax()
+        public virtual void Relax()
         {
             Console.WriteLine("Нужно отдыхать");
         }
@@ -41,24 +42,23 @@ namespace Task2
     }
     class ExcellentPupil : Pupil
     {
-        string name;
         public ExcellentPupil(string name)
         {
             this.name = name;
         }
-        public void Study()
+        public override void Study()
         {
             Console.WriteLine("Много учится");
         }
-        public void Read()
+        public override void Read()
         {
             Console.WriteLine("Быстро читает");
         }
-        public void Write()
+        public override void Write()
         {
             Console.WriteLine("Аккуратно пишет");
         }
-        public void Relax()
+        public override void Relax()
         {
             Console.WriteLine("Совсем не отдыхает");
         }
@@ -66,40 +66,46 @@ namespace Task2
 
     class GoodPupil : Pupil
     {
-        GoodPupil() { }
-        void Study()
+        public GoodPupil(string name)
+        {
+            this.name = name;
+        }
+        public override void Study()
         {
             Console.WriteLine("Хорошо учится");
         }
-        void Read()
+        public override void Read()
         {
             Console.WriteLine("Хорошо читает");
         }
-        void Write()
+        public override void Write()
         {
             Console.WriteLine("Хорошо пишет");
         }
-        void Relax()
+        public override void Relax()
         {
             Console.WriteLine("Достаточно отдыхает");
         }
     }
     class BadPupil : Pupil
     {
-        BadPupil() { }
-        void Study()
+        public BadPupil(string name)
+        {
+            this.name = name;
+        }
+        public override void Study()
         {
             Console.WriteLine("Совсем не учится");
         }
-        void Read()
+        public override void Read()
         {
             Console.WriteLine("Умеет читать");
         }
-        void Write()
+        public override void Write()
         {
             Console.WriteLine("Пишет с ошибками");
         }
-        void Relax()
+        public override void Relax()
         {
             Console.WriteLine("Много отдыхает");
         }

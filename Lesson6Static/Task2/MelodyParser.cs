@@ -17,71 +17,61 @@ namespace Task2
                     case '0':
                         {
                             newNote = new CreateDo();
-                            notes[i] = newNote.createNote();
                             break;
                         }
                     case '1':
                         {
                             newNote = new CreateRe();
-                            notes[i] = newNote.createNote();
                             break;
 
                         }
                     case '2':
                         {
                             newNote = new CreateMi();
-                            notes[i] = newNote.createNote();
                             break;
                         }
                     case '3':
                         {
                             newNote = new CreateFa();
-                            notes[i] = newNote.createNote();
                             break;
                         }
                     case '4':
                         {
                             newNote = new CreateSol();
-                            notes[i] = newNote.createNote();
                             break;
                         }
                     case '5':
                         {
                             newNote = new CreateLa();
-                            notes[i] = newNote.createNote();
                             break;
                         }
                     case '6':
                         {
                             newNote = new CreateTi();
-                            notes[i] = newNote.createNote();
                             break;
                         }
                     case '7':
                         {
                             newNote = new CreateDo();
-                            notes[i] = newNote.createNote();
                             break;
                         }
                     case '8':
                         {
                             newNote = new CreateRe();
-                            notes[i] = newNote.createNote();
                             break;
                         }
                     case '9':
                         {
                             newNote = new CreateMi();
-                            notes[i] = newNote.createNote();
                             break;
                         }
                     default:
                         {
                             newNote = new CreatePause();
-                            notes[i] = newNote.createNote();
                             break;
                         }
                 }
+                notes[i] = newNote.CreateNote();
             }
             return notes;
         }

@@ -6,7 +6,7 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            string melody = "987 876 765 654 ; 543 . 432 . 321; 111, 0";
+            string melody = "987 876 765 654 543 432 321 101";
             Note[] notes = MelodyParser.ParseMelody(melody);
             Player.Play(notes);
             Console.ReadKey();

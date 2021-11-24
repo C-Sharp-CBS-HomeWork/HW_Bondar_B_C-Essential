@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace Task3
@@ -9,6 +10,17 @@ namespace Task3
     /// </summary>
     public partial class MainWindow : Window
     {
+        DispatcherTimer timer;
+
+        public DispatcherTimer Timer // свойство поля timer; можно написать автосвойство
+        {
+            get
+            {
+                return timer;
+            }
+        }
+        // нужно для получения Value, значения timer в Presentere
+        // можно так: public DispatcherTimer Timer => timer; - автосвойство
         public MainWindow()
         {
             InitializeComponent();
@@ -16,13 +28,12 @@ namespace Task3
             new Presenter(this);
         }
 
-        public event EventHandler timerStart = null;
         public event EventHandler timerReset = null;
-        public event EventHandler timerStop = null;
 
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
-            timerStart.Invoke(sender, e);
+            timer.IsEnabled = true; // доступ к полю timer за счет его обьявления вначала класса
+            //никак не зависит от метода InitializeTimer(); переключает значение заданое в методе
         }
 
         private void resetButton_Click(object sender, RoutedEventArgs e)
@@ -32,16 +43,13 @@ namespace Task3
 
         private void stopButton_Click(object sender, RoutedEventArgs e)
         {
-            timerStop.Invoke(sender, e);
+            timer.IsEnabled = false;
+            // startButton и здесь событием есть нажатие, больше логики не нужно, вызывать как в reset не нужно
         }
-        private void timer_Tick(object sender, RoutedEventArgs e)
-        {
-            if (timerBar.Value < 100)
-                timerBar.Value++;
-        }
+
         private void InitializeTimer()
         {
-            DispatcherTimer timer = new DispatcherTimer();
+            timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
             timer.IsEnabled = false;

@@ -10,6 +10,6 @@
         <Button x:Name="startButton" Content="START" HorizontalAlignment="Left" Margin="100,250,0,0" VerticalAlignment="Top" Height="50" Width="100" FontSize="16" Click="startButton_Click"/>
         <Button x:Name="resetButton" Content="RESET" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Height="50" Width="100" FontSize="16" Click="resetButton_Click"/>
         <Button x:Name="stopButton" Content="STOP" HorizontalAlignment="Left" Margin="600,250,0,0" VerticalAlignment="Top" Height="50" Width="100" FontSize="16" Click="stopButton_Click"/>
-        <ProgressBar x:Name="timerBar" HorizontalAlignment="Left" Height="100" Margin="100,100,0,0" VerticalAlignment="Top" Width="600" ValueChanged="timerBar_ValueChanged"/>
+        <ProgressBar x:Name="timerBar" HorizontalAlignment="Left" Height="100" Margin="100,100,0,0" VerticalAlignment="Top" Width="600"/>
     </Grid>
 </Window>

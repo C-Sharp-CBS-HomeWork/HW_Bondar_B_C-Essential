@@ -5,7 +5,7 @@ namespace Task1
 {
     class Chain
     {
-        object block = new object();
+        static object block = new object();
         private char[] ChainCreator()
         {
 
@@ -26,60 +26,68 @@ namespace Task1
         }
         private void ChainWriter(char[] characters, int column, int row)
         {
+
             int x = column;
             int y = row; //счетчик строки из CompleteChain(). Если поставить 0, массив не сдвигается,
                          //тк основной метод CC перевызывает данный в каждой итерации, и 0 переписывает
                          //значение строки из СС. Итог - столбец выводится только сверху, хотя курсор идет вниз
+            Console.SetCursorPosition(x, y);
             for (int i = 0; i < characters.Length; i++)
             {
-                Console.SetCursorPosition(x, y);
+
                 if (i == characters.Length - 1)
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine(characters[i]);
-                    Console.SetCursorPosition(x, ++y);
+                    Console.Write(characters[i]);
+                    Console.SetCursorPosition(x, y); //++y не нужно. последний елемент. курсор внизу
                 }
                 else if (i == characters.Length - 2)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(characters[i]);
+                    Console.Write(characters[i]);
                     Console.SetCursorPosition(x, ++y);
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
-                    Console.WriteLine(characters[i]);
+                    Console.Write(characters[i]);
                     Console.SetCursorPosition(x, ++y);
                 }
             }
+
         }
         public void CompleteChain(object counter)
-        {   
+        {
             int column = (int)counter; // column нужно определять в двух методах, здесь и Chainwriter()
                                        // чтоб не слетал столбец
-            int row = 0; // основной счетчик строки, отвечает за перемещение всего массива characters
-                         // передаем в ChainWriter для вывода столбца на 1 ниже в каждой итерации
-            Console.CursorVisible = true;
+            Console.CursorVisible = false;
 
             char[] characters = ChainCreator();
 
-            for (; ; ) // для бесконечного вывода строки
+
+            while (true) // для бесконечного вывода строки
             {
                 for (int i = 0; i <= Console.WindowHeight; i++)
                 {
-                    ChainFiller(characters);
-                    ChainWriter(characters, column, row); // принимает row основного метода(всего массива)
-                    Console.SetCursorPosition(column, row++); //переносит строку на 1 вниз
-                    Console.WriteLine(" "); //стирает предыдущий символ
-                    Console.SetCursorPosition(column, row); //мб не нужно, но так не прыгает курсор
-                                                               //до перевызова Chainwriter()
-                    Thread.Sleep(300);
-
-                    if (i == Console.WindowHeight - characters.Length) // определяет нижнюю границу печати, по сути - по высоте окна;
+                    lock (block)
                     {
-                        Console.Clear();
-                        row = 0; // возвращает каретку в начало столбца(0 строка);
-                        break; // заканчивает текущий цикл
+                        ChainFiller(characters);
+                        ChainWriter(characters, column, i); // принимает row(i) основного метода(всего массива)
+                        Console.SetCursorPosition(column, i); //переносит строку на 1 вниз
+                        Console.Write(' '); //стирает предыдущий символ
+                        Console.SetCursorPosition(column, i); //мб не нужно, но так не прыгает курсор
+                                                              //до перевызова Chainwriter()
+
+                        if (i == Console.WindowHeight - characters.Length) // определяет нижнюю границу печати, по сути - по высоте окна;
+                        {
+                            for (int j = 0; j < characters.Length; j++) // закрашывает симоволы массива после i (нижняя часть)
+                            {
+                                Console.SetCursorPosition(column, i + j);
+                                Console.Write(' ');
+                            }
+                            i = 0; // возвращает каретку в начало столбца(0 строка);
+                            break; // заканчивает текущий цикл
+                        }
                     }
                 }
             }
@@ -88,16 +96,15 @@ namespace Task1
     }
     class Program
     {
-
         static void Main(string[] args)
         {
             Console.SetWindowSize(80, 30);
-            //new Chain().CompleteChain(7);
+
             for (int i = 0; i < Console.WindowWidth; i++)
             {
                 new Thread(new Chain().CompleteChain).Start(i);
+                Thread.Sleep(5);
             }
-            Console.ReadKey();
         }
     }
 }

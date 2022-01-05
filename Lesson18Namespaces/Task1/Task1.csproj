@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="MyDictionaryL14T3">
+      <HintPath>..\..\Lesson14Collections\MyDictionaryL14T3\bin\Debug\net5.0\MyDictionaryL14T3.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

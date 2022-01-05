@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using MyDictionary;
 
 namespace Task3
 {
-    class MyDictionary<Tkey, Tvalue>
+    // Код ниже вынесен в отдельный клас, и теперь используется через using MyDictionary
+    #region
+    /*class MyDictionary<Tkey, Tvalue>
     {
         KeyValuePair<Tkey,Tvalue>[] pairs = new KeyValuePair<Tkey, Tvalue>[0];
 
@@ -100,7 +103,8 @@ namespace Task3
             }
             return values;
         }
-    }
+    }*/
+    #endregion
     class Program
     {
         static void Main(string[] args)

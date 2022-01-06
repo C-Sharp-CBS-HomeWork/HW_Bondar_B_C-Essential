@@ -5,6 +5,7 @@ namespace Task2
     class Note
     {
         int duration, frequency;
+        bool isPause;
         public Note (int frequency, int duration)
         {
             this.frequency = frequency;

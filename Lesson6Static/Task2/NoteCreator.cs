@@ -9,7 +9,7 @@ namespace Task2
 
     class CreateDo : NoteCreator
     {
-
+        bool isPause = false;
         public override Note CreateNote()
         {
             return new Note(525, 500);
@@ -17,6 +17,7 @@ namespace Task2
     }
     class CreateRe : NoteCreator
     {
+        bool isPause = false;
         public override Note CreateNote()
         {
             return new Note(590, 500);
@@ -24,6 +25,7 @@ namespace Task2
     }
     class CreateMi : NoteCreator
     {
+        bool isPause = false;
         public override Note CreateNote()
         {
             return new Note(660, 500);
@@ -31,6 +33,7 @@ namespace Task2
     }
     class CreateFa : NoteCreator
     {
+        bool isPause = false;
         public override Note CreateNote()
         {
             return new Note(700, 500);
@@ -38,6 +41,7 @@ namespace Task2
     }
     class CreateSol : NoteCreator
     {
+        bool isPause = false;
         public override Note CreateNote()
         {
             return new Note(785, 500);
@@ -45,6 +49,7 @@ namespace Task2
     }
     class CreateLa : NoteCreator
     {
+        bool isPause = false;
         public override Note CreateNote()
         {
             return new Note(880, 500);
@@ -52,6 +57,7 @@ namespace Task2
     }
     class CreateTi : NoteCreator
     {
+        bool isPause = false;
         public override Note CreateNote()
         {
             return new Note(988, 500);
@@ -59,6 +65,7 @@ namespace Task2
     }
     class CreatePause : NoteCreator
     {
+        bool isPause = true;
         public override Note CreateNote()
         {
             return new Note(38, 1000);
